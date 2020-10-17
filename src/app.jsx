@@ -23,7 +23,7 @@ class App extends React.Component {
   render() {
     return JsxHelper.alertWhenError(() => (
       <div id="app">
-        <h1>priconn-db</h1>
+        <h1>プリコネ データベース</h1>
         <form id="searchForm" onSubmit={(event) => this.handleSubmitSearch(event)}>
           <input type="text" name="name"/>
           <input type="submit" value="検索"/>
