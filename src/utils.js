@@ -1,46 +1,15 @@
-export class Position {
-
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  isInside(max) {
-    return (
-      (this.x >= 0 && this.x <= max.x) &&
-      (this.y >= 0 && this.y <= max.y)
-    );
-  }
-
-  isInRangeOf(min, max) {
-    return (
-      (this.x >= min.x && this.x <= max.x) &&
-      (this.y >= min.y && this.y <= max.y)
-    );
-  }
-
-  offset(offsetX, offsetY) {
-    return new Position(this.x + offsetX, this.y + offsetY);
-  }
-
-  handle(callback) {
-    return callback(this.x, this.y);
-  }
-
-  point(array) {
-    return {
-      read: () => array[this.y][this.x],
-      write: (value) => array[this.y][this.x] = value
-    }
-  }
-}
-
 export const utils = {
 
   array: (target) => ({
-    forEach2d: (callback) => target.forEach((row, y) =>
-      row.forEach((cell, x) => callback(x, y, cell))
-    )
+    forEach2d: (callback) => {
+      for (let y = 0; y < target.length; y++) {
+        const row = target[y];
+
+        for (let x = 0; x < row.length; x++) {
+          callback(x, y, row[x]);
+        }
+      }
+    }
   }),
 
   line: (length) => ({

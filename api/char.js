@@ -3,42 +3,33 @@ const path = require('path');
 const router = require('express').Router();
 const charPath = path.join(__dirname, '../data/char/');
 
-// キャラクターデータファイルの一覧を取得します。
-function listCharFiles() {
-  return fs.readdirSync(charPath)
-    .filter(title => title.endsWith('.json'))
-    .map(title => path.join(charPath, title));
+const charFiles = fs.readdirSync(charPath)
+  .filter((title) => title.endsWith('.json'))
+  .map((title) => path.join(charPath, title));
+
+function compareChars(char1, char2) {
+  return (char1.name < char2.name) ? -1 : 1;
 }
 
-// キャラクターデータファイルを取得します。
 function getCharFile(id) {
   return path.join(charPath, `${id}.json`);
 }
 
-// キャラクターデータ配列をソートします。
-function sortChars(array) {
-  array.sort((left, right) => (left.name < right.name) ? -1 : 1);
-}
-
-// ルーティング：キャラクターデータを全件取得します。
 router.get('/', (request, response) => {
-  const chars = listCharFiles().map(require);
-  sortChars(chars);
+  const chars = charFiles.map(require);
+  chars.sort(compareChars);
   response.json(chars);
 });
 
-// ルーティング：指定されたIDのキャラクターデータを取得します。
 router.get('/:id(\\d+)', (request, response) => {
   response.json(require(getCharFile(request.params.id)));
 });
 
-// ルーティング：キャラクターデータを検索します。
 router.post('/search', (request, response) => {
   const chars = [];
-  const files = listCharFiles();
   const condition = request.body;
 
-  for (const file of files) {
+  for (const file of charFiles) {
     const char = require(file);
 
     if (condition.name && char.name.indexOf(condition.name) === -1) {
@@ -48,7 +39,7 @@ router.post('/search', (request, response) => {
     chars.push(char);
   }
 
-  sortChars(chars);
+  chars.sort(compareChars);
   response.json(chars);
 });
 

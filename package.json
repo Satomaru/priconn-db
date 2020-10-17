@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.x.x",
+    "@babel/plugin-proposal-class-properties": "7.x.x",
     "@babel/preset-env": "7.x.x",
     "@babel/preset-react": "7.x.x",
     "babel-loader": "8.x.x",
     "connect-multiparty": "^2.2.0",
     "css-loader": "2.1.x",
-    "deepcopy": "^2.1.0",
     "express": "4.16.x",
     "file-loader": "^4.0.0",
     "react": "16.x.x",

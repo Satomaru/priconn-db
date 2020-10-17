@@ -2,55 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { JsxHelper } from './jsx-helper.jsx';
 import { Ajax } from './ajax';
+import { List } from './component/list.jsx';
+import { Search } from './component/search.jsx';
 import './app.css';
 
 class App extends React.Component {
 
+  setStateChars = (chars) => this.setState({ list: { chars: chars } });
+
   constructor(prop) {
     super(prop);
 
-    JsxHelper.alertWhenError(() => {
-      this.state = this.createState();
-    });
-  }
-
-  createState() {
-    return {
-      list: []
+    this.state = {
+      list: {
+        chars: null
+      },
+      search: {
+        onSubmit: (data) => new Ajax('/char/search').setPost(data).fetch(this.setStateChars)
+      }
     };
   }
 
   render() {
-    return JsxHelper.alertWhenError(() => (
+    return (
       <div id="app">
-        <h1>プリコネ データベース</h1>
-        <form id="searchForm" onSubmit={(event) => this.handleSubmitSearch(event)}>
-          <input type="text" name="name"/>
-          <input type="submit" value="検索"/>
-        </form>
-        <table>
-          {this.state.list.map((char) => (
-            <tr>
-              <td>{char.name}</td>
-              <td>{char.align}</td>
-            </tr>
-          ))}
-        </table>
+        <h1>プリコネデータベース</h1>
+        <Search value={this.state.search}/>
+        <List value={this.state.list}/>
       </div>
-    ));
+    );
   }
 
   componentDidMount() {
-    new Ajax('/char')
-      .fetch((json) => this.setState({ list: json }));
-  }
-
-  handleSubmitSearch(event) {
-    event.preventDefault();
-
-    new Ajax('/char/search')
-      .setPost('searchForm')
-      .fetch((json) => this.setState({ list: json }));
+    new Ajax('/char').fetch(this.setStateChars);
   }
 }
 

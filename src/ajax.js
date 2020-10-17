@@ -1,3 +1,7 @@
+function showError(error) {
+  window.alert(error.message || error);
+}
+
 export class Ajax {
 
   constructor(url) {
@@ -5,10 +9,7 @@ export class Ajax {
     this.options = { method: 'GET' };
   }
 
-  setPost(formId) {
-    const form = document.getElementById(formId);
-    const data = new FormData(form);
-
+  setPost(data) {
     this.options = {
       method: 'POST',
       cache: 'no-cache',
@@ -26,9 +27,9 @@ export class Ajax {
           throw new Error(`ajax failure: HTTP ${response.status} ${this.options.method} ${this.url}`);
         }
 
-        return response.json()
+        return response.json();
       })
       .then(callback)
-      .catch((error) => window.alert(error.message || error));
+      .catch(showError);
   }
 }
