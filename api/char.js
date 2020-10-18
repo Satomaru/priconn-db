@@ -1,46 +1,32 @@
 const fs = require('fs');
 const path = require('path');
-const router = require('express').Router();
 const charPath = path.join(__dirname, '../data/char/');
+const fileMatcher = /^(\d+)\.json$/;
 
-const charFiles = fs.readdirSync(charPath)
-  .filter((title) => title.endsWith('.json'))
-  .map((title) => path.join(charPath, title));
-
-function compareChars(char1, char2) {
-  return (char1.name < char2.name) ? -1 : 1;
+function getAllIds() {
+  return fs.readdirSync(charPath)
+    .map((name) => fileMatcher.exec(name))
+    .filter((result) => result !== null)
+    .map((result) => result[1]);
 }
 
-function getCharFile(id) {
-  return path.join(charPath, `${id}.json`);
-}
+class Char {
 
-router.get('/', (request, response) => {
-  const chars = charFiles.map(require);
-  chars.sort(compareChars);
-  response.json(chars);
-});
+  static ids = getAllIds();
 
-router.get('/:id(\\d+)', (request, response) => {
-  response.json(require(getCharFile(request.params.id)));
-});
-
-router.post('/search', (request, response) => {
-  const chars = [];
-  const condition = request.body;
-
-  for (const file of charFiles) {
-    const char = require(file);
-
-    if (condition.name && char.name.indexOf(condition.name) === -1) {
-      continue;
-    }
-
-    chars.push(char);
+  static getAll() {
+    return this.ids.map((id) => new Char(id));
   }
 
-  chars.sort(compareChars);
-  response.json(chars);
-});
+  static compare(char1, char2) {
+    return (char1.data.name < char2.data.name) ? -1 : 1;
+  }
 
-module.exports = router;
+  constructor(id) {
+    const fileName = path.join(charPath, `${id}.json`);
+    this.data = Object.assign({}, require(fileName));
+    this.data.id = id;
+  }
+}
+
+module.exports = Char;

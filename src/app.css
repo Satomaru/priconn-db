@@ -95,5 +95,23 @@ tbody td {
 }
 
 tbody tr:nth-child(even) td {
-  background: #dde;
+  background: #eef;
+}
+
+svg {
+  vertical-align: middle;
+}
+
+/**************************************/
+
+.pos1 {
+  color: #f00;
+}
+
+.pos2 {
+  color: #fa0;
+}
+
+.pos3 {
+  color: #0af;
 }

@@ -1,5 +1,10 @@
 {
-  "id": 3,
-  "name": "ムイミ",
-  "position": ">>>"
+  "name": "マヒル（レンジャー）",
+  "position": 2,
+  "branch": ["RP", "SK", "SC"],
+  "rate": {
+    "quest": 3,
+    "boss": 1,
+    "arena": 3
+  }
 }

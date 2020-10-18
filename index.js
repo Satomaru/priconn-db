@@ -19,7 +19,7 @@ const middleware = webpackMiddleware(compiler, {
 app.use(middleware);
 app.use(multipart());
 app.use(express.static('public'));
-app.use('/char', require('./api/char'));
+app.use('/char', require('./api/char-api'));
 app.listen(port, () => console.log(`Launching... http://localhost:${port}\n`));
 
 try {

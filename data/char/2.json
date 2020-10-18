@@ -1,5 +1,10 @@
 {
-  "id": 2,
-  "name": "アカリ",
-  "position": ">>"
+  "name": "ジュン（サマー）",
+  "position": 1,
+  "branch": ["AP"],
+  "rate": {
+    "quest": 2,
+    "boss": 2,
+    "arena": 1
+  }
 }

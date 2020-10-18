@@ -1,5 +1,10 @@
 {
-  "id": 4,
-  "name": "アヤネ",
-  "position": ">>>"
+  "name": "リン（レンジャー）",
+  "position": 2,
+  "branch": ["SP"],
+  "rate": {
+    "quest": 1,
+    "boss": 1,
+    "arena": 3
+  }
 }
