@@ -1,10 +1,14 @@
 {
-  "name": "コッコロ（プリンセス）",
-  "position": 2,
-  "branch": ["SP", "SM", "SH", "ST"],
-  "rate": {
-    "quest": 4,
-    "boss": 4,
-    "arena": 4
+  "general": {
+    "name": "コッコロ（プリンセス）",
+    "position": 2,
+    "branch": ["SP", "SM", "SH", "ST"],
+    "rate": {
+      "quest": 4,
+      "boss": 4,
+      "arena": 4
+    }
+  },
+  "detail": {
   }
 }

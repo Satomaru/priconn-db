@@ -1,11 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const charOrderList = require('../data/char/order.json');
 const charPath = path.join(__dirname, '../data/char/');
-const fileMatcher = /^(\d+)\.json$/;
+const charFileMatcher = /^(\d+)\.json$/;
 
 function getAllIds() {
   return fs.readdirSync(charPath)
-    .map((name) => fileMatcher.exec(name))
+    .map((name) => charFileMatcher.exec(name))
     .filter((result) => result !== null)
     .map((result) => result[1]);
 }
@@ -18,14 +19,16 @@ class Char {
     return this.ids.map((id) => new Char(id));
   }
 
-  static compare(char1, char2) {
+  static compareByName(char1, char2) {
     return (char1.data.name < char2.data.name) ? -1 : 1;
   }
 
   constructor(id) {
     const fileName = path.join(charPath, `${id}.json`);
-    this.data = Object.assign({}, require(fileName));
+    this.data = Object.assign({}, require(fileName).general);
     this.data.id = id;
+    const order = charOrderList.indexOf(this.data.name);
+    this.data.order = (order !== -1) ? order + 1 : null;
   }
 }
 

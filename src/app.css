@@ -51,7 +51,7 @@ button, select, input {
   font-size: calc(var(--text-size) - 4px);
 }
 
-ahr {
+hr {
   width: 400px;
   height: 1px;
   margin: var(--paragraph-margin) 0 var(--paragraph-margin) 0;
@@ -82,19 +82,23 @@ th, td {
 
 th {
   font-weight: bold;
-  text-align: center;
 }
 
 thead th {
   border: 1px solid #aaf;
   background: #ccf;
+  text-align: center;
 }
 
-tbody td {
+tbody :matches(th, td) {
   border: 1px solid #aaa;
 }
 
-tbody tr:nth-child(even) td {
+tbody .number {
+  text-align: right;
+}
+
+tbody tr:nth-child(even) :matches(th, td) {
   background: #eef;
 }
 
@@ -104,14 +108,43 @@ svg {
 
 /**************************************/
 
-.pos1 {
-  color: #f00;
+.anchor {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.pos2 {
-  color: #fa0;
+/**************************************/
+
+#list .position1 svg {
+  fill: #f00;
 }
 
-.pos3 {
-  color: #0af;
+#list .position2 svg {
+  fill: #fa0;
+}
+
+#list .position3 svg {
+  fill: #0af;
+}
+
+#list .rating1 svg {
+  fill: url(#rating-gradient1);
+}
+
+#list .rating2 svg {
+  fill: url(#rating-gradient2);
+}
+
+#list .rating3 svg {
+  fill: url(#rating-gradient3);
+}
+
+#list .rating4 svg {
+  fill: url(#rating-gradient4);
+}
+
+#list .rating5 svg {
+  fill: url(#rating-gradient5);
 }

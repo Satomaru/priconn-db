@@ -1,0 +1,14 @@
+{
+  "general": {
+    "name": "ムイミ",
+    "position": 1,
+    "branch": ["AP", "RP", "OS"],
+    "rate": {
+      "quest": 3,
+      "boss": 4,
+      "arena": 3
+    }
+  },
+  "detail": {
+  }
+}

@@ -1,12 +1,12 @@
 {
   "general": {
-    "name": "ルナ",
+    "name": "ユニ",
     "position": 3,
-    "branch": ["AM", "ST"],
+    "branch": ["SP", "DM", "ST"],
     "rate": {
       "quest": 2,
-      "boss": 3,
-      "arena": 4
+      "boss": 4,
+      "arena": 3
     }
   },
   "detail": {

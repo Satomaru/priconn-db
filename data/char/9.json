@@ -1,11 +1,11 @@
 {
   "general": {
-    "name": "ジュン（サマー）",
+    "name": "タマキ（サマー）",
     "position": 1,
-    "branch": ["AP"],
+    "branch": ["AP", "OT"],
     "rate": {
       "quest": 2,
-      "boss": 2,
+      "boss": 4,
       "arena": 1
     }
   },

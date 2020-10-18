@@ -1,10 +1,14 @@
 {
-  "name": "リン（レンジャー）",
-  "position": 2,
-  "branch": ["SP"],
-  "rate": {
-    "quest": 1,
-    "boss": 1,
-    "arena": 3
+  "general": {
+    "name": "リン（レンジャー）",
+    "position": 2,
+    "branch": ["SP"],
+    "rate": {
+      "quest": 2,
+      "boss": 2,
+      "arena": 3
+    }
+  },
+  "detail": {
   }
 }

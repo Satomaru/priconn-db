@@ -1,0 +1,14 @@
+{
+  "general": {
+    "name": "ミミ（ハロウィン）",
+    "position": 2,
+    "branch": ["RP", "SP"],
+    "rate": {
+      "quest": 1,
+      "boss": 3,
+      "arena": 3
+    }
+  },
+  "detail": {
+  }
+}

@@ -3,8 +3,8 @@ const Char = require('./char');
 
 router.get('/', (request, response) => {
   const chars = Char.getAll();
-  chars.sort(Char.compare);
-  response.json(chars.map(char => char.data));
+  chars.sort(Char.compareByName);
+  response.json(chars.map((char) => char.data));
 });
 
 router.get('/:id(\\d+)', (request, response) => {
@@ -26,8 +26,8 @@ router.post('/search', (request, response) => {
     chars.push(char);
   }
 
-  chars.sort(Char.compare);
-  response.json(chars.map(char => char.data));
+  chars.sort(Char.compareByName);
+  response.json(chars.map((char) => char.data));
 });
 
 module.exports = router;

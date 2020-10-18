@@ -1,12 +1,12 @@
 {
   "general": {
-    "name": "ジュン（サマー）",
+    "name": "ペコリーヌ",
     "position": 1,
-    "branch": ["AP"],
+    "branch": ["DP"],
     "rate": {
       "quest": 2,
       "boss": 2,
-      "arena": 1
+      "arena": 2
     }
   },
   "detail": {

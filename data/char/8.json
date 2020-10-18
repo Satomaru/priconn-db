@@ -1,12 +1,12 @@
 {
   "general": {
-    "name": "ルナ",
-    "position": 3,
-    "branch": ["AM", "ST"],
+    "name": "クロエ",
+    "position": 1,
+    "branch": ["AP", "SP"],
     "rate": {
       "quest": 2,
       "boss": 3,
-      "arena": 4
+      "arena": 1
     }
   },
   "detail": {

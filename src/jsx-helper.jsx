@@ -1,22 +1,24 @@
-export function handleClick(event, value) {
-  if (!value.disabled && value.onClick) {
-    value.onClick();
+export function handleClick(event, props, ...args) {
+  event.preventDefault();
+
+  if (!props.disabled && props.onClick) {
+    props.onClick(...args);
   }
 }
 
-export function handleContextMenu(event, value) {
+export function handleContextMenu(event, props, ...args) {
   event.preventDefault();
 
-  if (!value.disabled && value.onContextMenu) {
-    value.onContextMenu();
+  if (!props.disabled && props.onContextMenu) {
+    props.onContextMenu(...args);
   }
 }
 
-export function handleSubmit(event, value) {
+export function handleSubmit(event, props, ...args) {
   event.preventDefault();
 
-  if (!value.disabled && value.onSubmit) {
-    value.onSubmit(new FormData(event.target));
+  if (!props.disabled && props.onSubmit) {
+    props.onSubmit(new FormData(event.target), ...args);
   }
 }
 

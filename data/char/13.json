@@ -1,0 +1,14 @@
+{
+  "general": {
+    "name": "クウカ",
+    "position": 1,
+    "branch": ["DP", "DM", "OP"],
+    "rate": {
+      "quest": 3,
+      "boss": 3,
+      "arena": 3
+    }
+  },
+  "detail": {
+  }
+}
