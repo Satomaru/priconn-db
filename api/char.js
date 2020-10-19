@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const apiUtils = require('./api-utils');
 const charOrderList = require('../data/char/order.json');
 const charPath = path.join(__dirname, '../data/char/');
 const charFileMatcher = /^(\d+)\.json$/;
@@ -20,7 +21,7 @@ class Char {
   }
 
   static compareByName(char1, char2) {
-    return (char1.data.name < char2.data.name) ? -1 : 1;
+    return apiUtils.compare(char1.data.name, char2.data.name);
   }
 
   constructor(id) {

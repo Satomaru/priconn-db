@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Char = require('./char');
+const Matcher = require('./matcher');
 
 router.get('/', (request, response) => {
   const chars = Char.getAll();
@@ -13,17 +14,13 @@ router.get('/:id(\\d+)', (request, response) => {
 
 router.post('/search', (request, response) => {
   const chars = [];
-  const condition = request.body;
 
   for (const id of Char.ids) {
     const char = new Char(id);
-    const data = char.data;
 
-    if (condition.name && data.name.indexOf(condition.name) === -1) {
-      continue;
-    }
-
-    chars.push(char);
+    new Matcher(char.data)
+      .contains('name', request.body.name)
+      .ifMatched(() => chars.push(char));
   }
 
   chars.sort(Char.compareByName);

@@ -1,7 +1,7 @@
 {
   "general": {
     "name": "タマキ（サマー）",
-    "position": 1,
+    "position": 3,
     "branch": ["AP", "OT"],
     "rate": {
       "quest": 2,

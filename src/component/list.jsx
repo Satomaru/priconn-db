@@ -9,7 +9,7 @@ function getPosition(value) {
 
   const icons = [];
 
-  for (let i = 3; i >= value; i--) {
+  for (let i = 0; i < value; i++) {
     icons.push(<Position/>);
   }
 
@@ -86,6 +86,18 @@ export class List extends React.Component {
     handleClick(event, this.props, 'order');
   }
 
+  handleClickQuest = (event) => {
+    handleClick(event, this.props, 'quest');
+  }
+
+  handleClickBoss = (event) => {
+    handleClick(event, this.props, 'boss');
+  }
+
+  handleClickArena = (event) => {
+    handleClick(event, this.props, 'arena');
+  }
+
   render() {
     return (
       <div id="list">
@@ -99,13 +111,13 @@ export class List extends React.Component {
               <th colspan="3">評価</th>
             </tr>
             <tr>
-              <th>クエスト</th>
-              <th>ボス戦</th>
-              <th>対戦</th>
+              <th className="anchor" onClick={this.handleClickQuest}>クエスト</th>
+              <th className="anchor" onClick={this.handleClickBoss}>ボス戦</th>
+              <th className="anchor" onClick={this.handleClickArena}>アリーナ</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.value.chars?.map(char => <Row value={char}/>)}
+            {this.props.value.chars?.map((char) => <Row value={char}/>)}
           </tbody>
         </table>
       </div>

@@ -1,7 +1,7 @@
 {
   "general": {
     "name": "クロエ",
-    "position": 1,
+    "position": 3,
     "branch": ["AP", "SP"],
     "rate": {
       "quest": 2,

@@ -1,7 +1,7 @@
 {
   "general": {
     "name": "クウカ",
-    "position": 1,
+    "position": 3,
     "branch": ["DP", "DM", "OP"],
     "rate": {
       "quest": 3,

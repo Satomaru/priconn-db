@@ -1,7 +1,7 @@
 {
   "general": {
     "name": "ルナ",
-    "position": 3,
+    "position": 1,
     "branch": ["AM", "ST"],
     "rate": {
       "quest": 2,

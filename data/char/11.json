@@ -1,7 +1,7 @@
 {
   "general": {
     "name": "ペコリーヌ",
-    "position": 1,
+    "position": 3,
     "branch": ["DP"],
     "rate": {
       "quest": 2,

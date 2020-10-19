@@ -1,8 +1,8 @@
 {
   "general": {
     "name": "ムイミ",
-    "position": 1,
-    "branch": ["AP", "RP", "OS"],
+    "position": 3,
+    "branch": ["AP", "RP", "OK", "OS"],
     "rate": {
       "quest": 3,
       "boss": 4,

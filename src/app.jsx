@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { appUtils } from './app-utils';
 import { Ajax } from './ajax';
 import { List } from './component/list.jsx';
 import { Search } from './component/search.jsx';
 import './app.css';
 
-function compareCharsByName(char1, char2) {
-  return (char1.name < char2.name) ? -1 : 1;
-}
+const compareCharByName = appUtils.comparator.create((char) => char.name);
+const compareCharByOrder = appUtils.comparator.create((char) => char.order);
+const compareCharByQuest = appUtils.comparator.create((char) => char.rate.quest, true);
+const compareCharByBoss = appUtils.comparator.create((char) => char.rate.boss, true);
+const compareCharByArena = appUtils.comparator.create((char) => char.rate.arena, true);
 
-function compareCharsByOrder(char1, char2) {
-  return char1.order - char2.order;
-}
+const charComparators = {
+  name: compareCharByName,
+  order: compareCharByOrder,
+  quest: appUtils.comparator.bundle(compareCharByQuest, compareCharByName),
+  boss: appUtils.comparator.bundle(compareCharByBoss, compareCharByName),
+  arena: appUtils.comparator.bundle(compareCharByArena, compareCharByName)
+};
 
 class App extends React.Component {
 
@@ -28,12 +35,7 @@ class App extends React.Component {
 
   handleClickList = (column) => {
     this.setState((state, props) => {
-      let comparator;
-
-      switch (column) {
-        case 'name': comparator = compareCharsByName; break;
-        case 'order': comparator = compareCharsByOrder; break;
-      }
+      const comparator = charComparators[column];
 
       if (comparator) {
         state.list.chars.sort(comparator);

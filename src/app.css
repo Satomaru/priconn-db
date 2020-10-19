@@ -86,7 +86,7 @@ th {
 
 thead th {
   border: 1px solid #aaf;
-  background: #ccf;
+  background-color: #ccf;
   text-align: center;
 }
 
@@ -99,7 +99,7 @@ tbody .number {
 }
 
 tbody tr:nth-child(even) :matches(th, td) {
-  background: #eef;
+  background-color: #eef;
 }
 
 svg {
@@ -118,7 +118,7 @@ svg {
 /**************************************/
 
 #list .position1 svg {
-  fill: #f00;
+  fill: #0af;
 }
 
 #list .position2 svg {
@@ -126,7 +126,7 @@ svg {
 }
 
 #list .position3 svg {
-  fill: #0af;
+  fill: #f00;
 }
 
 #list .rating1 svg {
