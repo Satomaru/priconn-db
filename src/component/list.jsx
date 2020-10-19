@@ -78,25 +78,12 @@ function Row(props) {
 
 export class List extends React.Component {
 
-  handleClickName = (event) => {
-    handleClick(event, this.props, 'name');
-  }
-
-  handleClickOrder = (event) => {
-    handleClick(event, this.props, 'order');
-  }
-
-  handleClickQuest = (event) => {
-    handleClick(event, this.props, 'quest');
-  }
-
-  handleClickBoss = (event) => {
-    handleClick(event, this.props, 'boss');
-  }
-
-  handleClickArena = (event) => {
-    handleClick(event, this.props, 'arena');
-  }
+  handleClickName = (event) => handleClick(event, this.props, 'name');
+  handleClickOrder = (event) => handleClick(event, this.props, 'order');
+  handleClickQuest = (event) => handleClick(event, this.props, 'quest');
+  handleClickBoss = (event) => handleClick(event, this.props, 'boss');
+  handleClickArena = (event) => handleClick(event, this.props, 'arena');
+  handleClickRate = (event) => handleClick(event, this.props, 'rate');
 
   render() {
     return (
@@ -108,7 +95,7 @@ export class List extends React.Component {
               <th rowspan="2">配置</th>
               <th rowspan="2" className="anchor" onClick={this.handleClickOrder}>順列</th>
               <th rowspan="2">役割</th>
-              <th colspan="3">評価</th>
+              <th colspan="3" className="anchor" onClick={this.handleClickRate}>評価</th>
             </tr>
             <tr>
               <th className="anchor" onClick={this.handleClickQuest}>クエスト</th>
