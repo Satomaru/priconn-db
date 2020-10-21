@@ -1,34 +1,72 @@
 import React from 'react';
-import { handleSubmit } from '../jsx-helper.jsx';
+import { handleSubmit, handleChange } from '../jsx-helper.jsx';
 import skillList from './skill-list.json';
 
-function SkillGroup(props) {
-  const groupId = 'searchSkill' + props.value.value;
-  const itemName = 'skill' + props.value.value;
+const skillGroupOptions = [];
+const skills = {};
 
-  const checkboxes = props.value.items.map(item => {
-    const id = groupId + item.value;
+skillList.forEach((group) => {
+  skillGroupOptions.push(<option value={group.value}>{group.caption}</option>);
+  skills[group.value] = group.items;
+});
 
+class SkillGroup extends React.Component {
+
+  handleChange = (event) => {
+    handleChange(event, this.props, this.props.name, event.target.value, event.target.checked);
+  }
+
+  render() {
     return (
       <span>
-        <input id={id} type="checkbox" name={itemName} value={item.value}/>
-        <label for={id}>{item.caption}</label>
+        {skills[this.props.name]?.map((item) =>
+          <span>
+            <input
+              id={'skill' + item.value}
+              type="checkbox"
+              name="skill"
+              value={item.value}
+              checked={this.props.checked && this.props.checked[item.value]}
+              onChange={this.handleChange}/>
+
+            <label for={'skill' + item.value}>{item.caption}</label>
+          </span>
+        )}
       </span>
     );
-  });
-
-  return (
-    <dd>
-      <input id={groupId} type="radio" name="skill" value={props.value.value}/>
-      <label for={groupId}>{props.value.caption} →</label>
-      {checkboxes}
-    </dd>
-  );
+  }
 }
 
 export class Search extends React.Component {
 
   handleSubmit = (event) => handleSubmit(event, this.props);
+
+  handleChangeSkillGroup = (event) => {
+    this.setState({ skillGroup: event.target.value });
+  }
+
+  handleChangeSkill = (group, skill, checked) => {
+    this.setState((state, props) => {
+      const skillChecked = Object.assign({}, state.skillChecked);
+
+      if (!skillChecked[group]) {
+        skillChecked[group] = {};
+      }
+
+      skillChecked[group][skill] = checked;
+      return { skillChecked: skillChecked };
+    });
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      skillGroup: '',
+      skillChecked: {},
+      debug: null
+    };
+  }
 
   render() {
     return (
@@ -54,10 +92,21 @@ export class Search extends React.Component {
 
               <dt>技能</dt>
               <dd>
-                <input id="searchSkillAll" type="radio" name="skill" value="" defaultChecked/>
-                <label for="searchSkillAll">全て</label>
+                <select
+                  name="skillgroup"
+                  value={this.state.skillGroup}
+                  onChange={this.handleChangeSkillGroup}>
+
+                  <option value="">全て</option>
+                  {skillGroupOptions}
+                </select>
+
+                <SkillGroup
+                  name={this.state.skillGroup}
+                  checked={this.state.skillChecked[this.state.skillGroup]}
+                  onChange={this.handleChangeSkill}/>
+
               </dd>
-              {skillList.map((group) => <SkillGroup value={group}/>)}
             </dl>
             <div className="buttons">
               <input type="submit" value="検索"/>

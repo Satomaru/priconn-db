@@ -1,6 +1,4 @@
 export function handleClick(event, props, ...args) {
-  event.preventDefault();
-
   if (!props.disabled && props.onClick) {
     props.onClick(...args);
   }
@@ -11,6 +9,12 @@ export function handleContextMenu(event, props, ...args) {
 
   if (!props.disabled && props.onContextMenu) {
     props.onContextMenu(...args);
+  }
+}
+
+export function handleChange(event, props, ...args) {
+  if (!props.disabled && props.onChange) {
+    props.onChange(...args);
   }
 }
 

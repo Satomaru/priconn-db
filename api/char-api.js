@@ -18,7 +18,7 @@ router.get('/:id([a-z]+|[a-z]+-[a-z]{2})', (request, response) => {
 router.post('/search', (request, response) => {
   console.log('\nrequest: char-api/search', request.body);
   const chars = [];
-  const expectedSkills = request.body.skill && (request.body['skill' + request.body.skill] || []);
+  const skill = request.body.skillgroup && (request.body.skill || []);
 
   for (const id of Char.ids) {
     const char = new Char(id);
@@ -26,7 +26,7 @@ router.post('/search', (request, response) => {
     new Matcher()
       .includes(char.data.name, request.body.name)
       .equalsNumber(char.data.position, request.body.position)
-      .containsOneOf(char.data.skill[request.body.skill], expectedSkills)
+      .containsOneOf(char.data.skill[request.body.skillgroup], skill)
       .ifMatched(() => chars.push(char));
   }
 

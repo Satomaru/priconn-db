@@ -300,3 +300,8 @@ fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
 #search .buttons {
   text-align: right;
 }
+
+#search select[name="skillgroup"] {
+  margin-right: 8px;
+  vertical-align: top;
+}
