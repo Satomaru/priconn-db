@@ -2,7 +2,10 @@
   "general": {
     "name": "リン（レンジャー）",
     "position": 2,
-    "branch": ["SP"],
+    "skill": {
+      "attack": [ "PR" ],
+      "weaken": [ "DP" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 2,

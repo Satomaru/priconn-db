@@ -1,4 +1,6 @@
 const apiUtils = {
+  toArray: (...value) => value.flat(),
+
   isNullish: (value) => value === null || value === undefined,
 
   compare: (value1, value2) => {

@@ -2,7 +2,10 @@
   "general": {
     "name": "クロエ",
     "position": 3,
-    "branch": ["AP", "SP"],
+    "skill": {
+      "attack": [ "PS" ],
+      "weaken": [ "DP" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 3,

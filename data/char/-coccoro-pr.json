@@ -2,7 +2,11 @@
   "general": {
     "name": "コッコロ（プリンセス）",
     "position": 2,
-    "branch": ["SP", "SM", "SH", "ST"],
+    "skill": {
+      "assist": [ "HP", "TP"],
+      "enhance": [ "AP", "AM" ],
+      "weaken": [ "DP", "DM" ]
+    },
     "rate": {
       "quest": 4,
       "boss": 4,

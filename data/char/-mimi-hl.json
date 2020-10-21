@@ -2,7 +2,10 @@
   "general": {
     "name": "ミミ（ハロウィン）",
     "position": 2,
-    "branch": ["RP", "SP"],
+    "skill": {
+      "attack": [ "PR" ],
+      "enhance": [ "AP" ]
+    },
     "rate": {
       "quest": 1,
       "boss": 3,

@@ -1,12 +1,14 @@
 {
   "general": {
-    "name": "ジュン（サマー）",
+    "name": "トモ",
     "position": 3,
-    "branch": ["AP"],
+    "skill": {
+      "attack": [ "PS", "PR" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 2,
-      "arena": 1
+      "arena": 2
     }
   },
   "detail": {

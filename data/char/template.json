@@ -1,0 +1,21 @@
+{
+  "general": {
+    "name": "",
+    "position": 1,
+    "skill": {
+      "attack": [ "PS", "PR", "PA", "MS", "MR", "MA" ],
+      "defense": [ "PH", "MG" ],
+      "assist": [ "HP", "TP", "SP" ],
+      "enhance": [ "AP", "AM", "DP", "DM", "BP", "BM" ],
+      "weaken": [ "AP", "AM", "DP", "DM" ],
+      "encumber": [ "NK", "ST", "CF", "BL", "TP", "PR" ]
+    },
+    "rate": {
+      "quest": 1,
+      "boss": 1,
+      "arena": 1
+    }
+  },
+  "detail": {
+  }
+}

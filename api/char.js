@@ -3,18 +3,16 @@ const path = require('path');
 const apiUtils = require('./api-utils');
 const charOrderList = require('../data/char/order.json');
 const charPath = path.join(__dirname, '../data/char/');
-const charFileMatcher = /^(\d+)\.json$/;
+const charFileMatcher = /^-([a-z]+(-[a-z]{2})?)\.json$/;
 
-function getAllIds() {
-  return fs.readdirSync(charPath)
-    .map((name) => charFileMatcher.exec(name))
-    .filter((result) => result !== null)
-    .map((result) => result[1]);
-}
+const charIds = fs.readdirSync(charPath)
+  .map((name) => charFileMatcher.exec(name))
+  .filter((result) => result !== null)
+  .map((result) => result[1]);
 
 class Char {
 
-  static ids = getAllIds();
+  static ids = charIds.slice();
 
   static getAll() {
     return this.ids.map((id) => new Char(id));
@@ -25,7 +23,11 @@ class Char {
   }
 
   constructor(id) {
-    const fileName = path.join(charPath, `${id}.json`);
+    if (!charIds.includes(id)) {
+      throw new Error(`illegal id: ${id}`);
+    }
+
+    const fileName = path.join(charPath, `-${id}.json`);
     this.data = Object.assign({}, require(fileName).general);
     this.data.id = id;
     const order = charOrderList.indexOf(this.data.name);

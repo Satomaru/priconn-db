@@ -1,63 +1,53 @@
 import React from 'react';
 import { handleClick } from '../jsx-helper.jsx';
-import { Position, Rating } from './icons.jsx';
+import { CaretRight, Star } from './icons.jsx';
+import skillList from './skill-list.json';
 
-function getPosition(value) {
-  if (!value) {
-    return;
-  }
+function getSkillGroup(value) {
+  return skillList.find((group) => group.value === value);
+}
 
+function getSkill(group, value) {
+  return getSkillGroup(group).items.find((item) => item.value === value);
+}
+
+function Position(props) {
   const icons = [];
 
-  for (let i = 0; i < value; i++) {
-    icons.push(<Position/>);
+  for (let i = 0; i < props.value; i++) {
+    icons.push(<CaretRight/>);
   }
 
   return (
-    <span className={'position' + value}>
+    <span className={'position' + props.value}>
       {icons}
     </span>
   );
 }
 
-function getBranch(value) {
-  switch (value) {
-    case "AP": return "物単";
-    case "AM": return "魔単";
-    case "RP": return "物範";
-    case "RM": return "魔範";
-    case "PP": return "物全";
-    case "PM": return "魔全";
-    case "DP": return "物防";
-    case "DM": return "魔防";
-    case "SP": return "物補";
-    case "SM": return "魔補";
-    case "SH": return "HP回復";
-    case "ST": return "TP上昇";
-    case "SS": return "速度上昇";
-    case "OC": return "混乱";
-    case "OK": return "強打";
-    case "OP": return "挑発"; 
-    case "OS": return "気絶";
-    case "OT": return "TP遅延";
-    default: return value;
-  }
-}
-
-function getRating(value) {
-  if (!value) {
-    return;
-  }
-
+function Rating(props) {
   const icons = [];
 
-  for (let i = 0; i < value; i++) {
-    icons.push(<Rating/>);
+  for (let i = 0; i < props.value; i++) {
+    icons.push(<Star/>);
   }
 
   return (
-    <span className={'rating' + value}>
+    <span className={'rating' + props.value}>
       {icons}
+    </span>
+  );
+}
+
+function Skill(props) {
+  const skill = getSkill(props.group, props.value);
+  return <span>{skill?.caption}&nbsp;</span>;
+}
+
+function SkillGroup(props) {
+  return (
+    <span>
+      {props.value?.map(value => <Skill group={props.name} value={value}/>)}
     </span>
   );
 }
@@ -65,13 +55,18 @@ function getRating(value) {
 function Row(props) {
   return (
     <tr>
-      <th>{props.value.name}</th>
-      <td>{getPosition(props.value.position)}</td>
-      <td className="number">{props.value.order}</td>
-      <td>{props.value.branch.map(getBranch).join('、')}</td>
-      <td>{getRating(props.value.rate.quest)}</td>
-      <td>{getRating(props.value.rate.boss)}</td>
-      <td>{getRating(props.value.rate.arena)}</td>
+      <td>{props.data.name}</td>
+      <td><Position value={props.data.position}/></td>
+      <td className="number">{props.data.order}</td>
+      <td className="attack"><SkillGroup name="attack" value={props.data.skill.attack}/></td>
+      <td className="defense"><SkillGroup name="defense" value={props.data.skill.defense}/></td>
+      <td className="assist"><SkillGroup name="assist" value={props.data.skill.assist}/></td>
+      <td className="enhance"><SkillGroup name="enhance" value={props.data.skill.enhance}/></td>
+      <td className="weaken"><SkillGroup name="weaken" value={props.data.skill.weaken}/></td>
+      <td className="encumber"><SkillGroup name="encumber" value={props.data.skill.encumber}/></td>
+      <td><Rating value={props.data.rate.quest}/></td>
+      <td><Rating value={props.data.rate.boss}/></td>
+      <td><Rating value={props.data.rate.arena}/></td>
     </tr>
   );
 }
@@ -94,17 +89,23 @@ export class List extends React.Component {
               <th rowspan="2" className="anchor" onClick={this.handleClickName}>名前</th>
               <th rowspan="2">配置</th>
               <th rowspan="2" className="anchor" onClick={this.handleClickOrder}>順列</th>
-              <th rowspan="2">役割</th>
+              <th colspan="6">技能</th>
               <th colspan="3" className="anchor" onClick={this.handleClickRate}>評価</th>
             </tr>
             <tr>
+              <th className="attack">{getSkillGroup('attack').caption}</th>
+              <th className="defense">{getSkillGroup('defense').caption}</th>
+              <th className="assist">{getSkillGroup('assist').caption}</th>
+              <th className="enhance">{getSkillGroup('enhance').caption}</th>
+              <th className="weaken">{getSkillGroup('weaken').caption}</th>
+              <th className="encumber">{getSkillGroup('encumber').caption}</th>
               <th className="anchor" onClick={this.handleClickQuest}>クエスト</th>
               <th className="anchor" onClick={this.handleClickBoss}>ボス戦</th>
               <th className="anchor" onClick={this.handleClickArena}>アリーナ</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.value.chars?.map((char) => <Row value={char}/>)}
+            {this.props.value.chars?.map((char) => <Row data={char}/>)}
           </tbody>
         </table>
       </div>

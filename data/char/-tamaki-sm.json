@@ -2,7 +2,10 @@
   "general": {
     "name": "タマキ（サマー）",
     "position": 3,
-    "branch": ["AP", "OT"],
+    "skill": {
+      "attack": [ "PS" ],
+      "encumber": [ "TP" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 4,

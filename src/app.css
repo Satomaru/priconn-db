@@ -1,11 +1,13 @@
 :root {
-  --box-size: 9;
-  --cell-size: 36px;
-  --paragraph-margin: 16px;
-  --text-size: 16px;
+  --paragraph-margin: 12px;
+  --text-size: 12px;
+  --form-width: 640px;
+  --form-label-width: 48px;
+  --form-item-height: 22px;
 }
 
 /**************************************/
+/* outline */
 
 h1 {
   margin: 0 0 var(--paragraph-margin) 0;
@@ -37,20 +39,6 @@ p {
   line-height: calc(var(--text-size) * 1.5);
 }
 
-em {
-  padding: 0 calc(var(--text-size) / 4) 0 calc(var(--text-size) / 4);
-  font-family: inherit;
-  font-style: normal;
-  font-size: inherit;
-  font-weight: bold;
-  color: #f00;
-}
-
-button, select, input {
-  font-family: sans-serif;
-  font-size: calc(var(--text-size) - 4px);
-}
-
 hr {
   width: 400px;
   height: 1px;
@@ -67,12 +55,32 @@ ul {
   list-style-position: inside;
 }
 
+/**************************************/
+/* text & inline */
+
+em {
+  padding: 0 calc(var(--text-size) / 4) 0 calc(var(--text-size) / 4);
+  font-family: inherit;
+  font-style: normal;
+  font-size: inherit;
+  font-weight: bold;
+  color: #f00;
+}
+
+svg {
+  vertical-align: middle;
+}
+
+/**************************************/
+/* table */
+
 table {
   margin: var(--paragraph-margin) 0 0 0;
   border-collapse: collapse;
 }
 
 th, td {
+  border: 1px solid #aaa;
   padding: 4px 8px 4px 8px;
   font-family: serif;
   font-size: var(--text-size);
@@ -85,13 +93,8 @@ th {
 }
 
 thead th {
-  border: 1px solid #aaf;
-  background-color: #ccf;
+  background-color: #ccc;
   text-align: center;
-}
-
-tbody :matches(th, td) {
-  border: 1px solid #aaa;
 }
 
 tbody .number {
@@ -99,14 +102,83 @@ tbody .number {
 }
 
 tbody tr:nth-child(even) :matches(th, td) {
-  background-color: #eef;
-}
-
-svg {
-  vertical-align: middle;
+  background-color: #eee;
 }
 
 /**************************************/
+/* form */
+
+button, select, input {
+  font-family: sans-serif;
+  font-size: var(--text-size);
+}
+
+fieldset {
+  box-sizing: border-box;
+  width: var(--form-width);
+  border: 1px solid #888;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+fieldset legend {
+  margin-left: 8px;
+  font-size: var(--text-size);
+}
+
+fieldset dl {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset dt {
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  clear: left;
+  width: var(--form-label-width);
+  height: var(--form-item-height);
+  margin: 0 8px 8px 0;
+  padding: 0;
+  font-size: var(--text-size);
+  font-weight: bold;
+  line-height: var(--form-item-height);
+  text-align: right;
+  vertical-align: middle;
+}
+
+fieldset dd {
+  box-sizing: border-box;
+  display: block;
+  height: var(--form-item-height);
+  margin: 0 0 8px calc(var(--form-label-width) + 8px);
+  padding: 0;
+  font-size: var(--text-size);
+  line-height: var(--form-item-height);
+  vertical-align: middle;
+}
+
+fieldset input[type="text"] {
+  box-sizing: border-box;
+  width: calc(var(--form-width) - var(--form-label-width) - 32px);
+  margin: 0;
+  padding: 0 0 0 4px;
+}
+
+fieldset select {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 4px 0 4px;
+}
+
+fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
+  padding-right: 1em;
+  font-size: var(--text-size);
+  vertical-align: top;
+}
+
+/**************************************/
+/* general class */
 
 .anchor {
   cursor: pointer;
@@ -116,6 +188,79 @@ svg {
 }
 
 /**************************************/
+/* list component */
+
+#list th.attack {
+  background-color: #cbb;
+}
+
+#list th.defense {
+  background-color: #ccb;
+}
+
+#list th.assist {
+  background-color: #bcb;
+}
+
+#list th.enhance {
+  background-color: #bcc;
+}
+
+#list th.weaken {
+  background-color: #bbc;
+}
+
+#list th.encumber {
+  background-color: #cbc;
+}
+
+#list td.attack {
+  background-color: #fee;
+}
+
+#list tr:nth-child(even) td.attack {
+  background-color: #edd;
+}
+
+#list td.defense {
+  background-color: #ffe;
+}
+
+#list tr:nth-child(even) td.defense {
+  background-color: #eed;
+}
+
+#list td.assist {
+  background-color: #efe;
+}
+
+#list tr:nth-child(even) td.assist {
+  background-color: #ded;
+}
+
+#list td.enhance {
+  background-color: #eff;
+}
+
+#list tr:nth-child(even) td.enhance {
+  background-color: #dee;
+}
+
+#list td.weaken {
+  background-color: #eef;
+}
+
+#list tr:nth-child(even) td.weaken {
+  background-color: #dde;
+}
+
+#list td.encumber {
+  background-color: #fef;
+}
+
+#list tr:nth-child(even) td.encumber {
+  background-color: #ede;
+}
 
 #list .position1 svg {
   fill: #0af;
@@ -130,21 +275,28 @@ svg {
 }
 
 #list .rating1 svg {
-  fill: url(#rating-gradient1);
+  fill: url(#star1);
 }
 
 #list .rating2 svg {
-  fill: url(#rating-gradient2);
+  fill: url(#star2);
 }
 
 #list .rating3 svg {
-  fill: url(#rating-gradient3);
+  fill: url(#star3);
 }
 
 #list .rating4 svg {
-  fill: url(#rating-gradient4);
+  fill: url(#star4);
 }
 
 #list .rating5 svg {
-  fill: url(#rating-gradient5);
+  fill: url(#star5);
+}
+
+/**************************************/
+/* search component */
+
+#search .buttons {
+  text-align: right;
 }

@@ -2,7 +2,10 @@
   "general": {
     "name": "クウカ",
     "position": 3,
-    "branch": ["DP", "DM", "OP"],
+    "skill": {
+      "defense": [ "AP", "AM" ],
+      "encumber": [ "PR" ]
+    },
     "rate": {
       "quest": 3,
       "boss": 3,

@@ -2,7 +2,10 @@
   "general": {
     "name": "マヒル（レンジャー）",
     "position": 2,
-    "branch": ["RP", "OK", "OC"],
+    "skill": {
+      "attack": [ "PR" ],
+      "encumber": [ "NK", "CF" ]
+    },
     "rate": {
       "quest": 3,
       "boss": 1,

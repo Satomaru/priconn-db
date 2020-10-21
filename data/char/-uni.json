@@ -2,7 +2,10 @@
   "general": {
     "name": "ユニ",
     "position": 1,
-    "branch": ["SP", "DM", "ST"],
+    "skill": {
+      "assist": [ "TP" ],
+      "enhance": [ "AP", "AM" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 4,

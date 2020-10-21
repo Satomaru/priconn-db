@@ -2,7 +2,10 @@
   "general": {
     "name": "ルナ",
     "position": 1,
-    "branch": ["AM", "ST"],
+    "skill": {
+      "attack": [ "MS" ],
+      "assist": [ "TP" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 3,

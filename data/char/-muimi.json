@@ -2,7 +2,11 @@
   "general": {
     "name": "ムイミ",
     "position": 3,
-    "branch": ["AP", "RP", "OK", "OS"],
+    "skill": {
+      "attack": [ "PS", "PR" ],
+      "weaken": [ "DP" ],
+      "encumber": [ "NK", "ST" ]
+    },
     "rate": {
       "quest": 3,
       "boss": 4,

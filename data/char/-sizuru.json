@@ -1,12 +1,15 @@
 {
   "general": {
-    "name": "トモ",
+    "name": "シズル",
     "position": 3,
-    "branch": ["AP", "RP"],
+    "skill": {
+      "assist": [ "HP" ],
+      "enhance": [ "BP" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 2,
-      "arena": 2
+      "arena": 1
     }
   },
   "detail": {

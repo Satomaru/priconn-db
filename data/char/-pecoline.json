@@ -1,12 +1,14 @@
 {
   "general": {
-    "name": "シズル",
+    "name": "ペコリーヌ",
     "position": 3,
-    "branch": ["SH"],
+    "skill": {
+      "defense": [ "AP", "AM" ]
+    },
     "rate": {
       "quest": 2,
       "boss": 2,
-      "arena": 1
+      "arena": 2
     }
   },
   "detail": {

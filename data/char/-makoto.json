@@ -2,7 +2,10 @@
   "general": {
     "name": "マコト",
     "position": 3,
-    "branch": ["AP", "SP"],
+    "skill": {
+      "attack": [ "PS" ],
+      "weaken": [ "DP" ]
+    },
     "rate": {
       "quest": 3,
       "boss": 3,
