@@ -1,6 +1,6 @@
 import React from 'react';
 import { handleSubmit, handleChange } from '../jsx-helper.jsx';
-import skillList from './skill-list.json';
+import { skillList } from './skill';
 
 const skillGroupOptions = [];
 const skills = {};

@@ -188,109 +188,116 @@ fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
 }
 
 /**************************************/
+/* app component */
+
+#app {
+  width: 1024px;
+}
+
+/**************************************/
 /* list component */
 
-#list th.attack {
+#list thead th.attack {
   background-color: #cbb;
 }
 
-#list th.defense {
+#list thead th.defense {
   background-color: #ccb;
 }
 
-#list th.assist {
+#list thead th.assist {
   background-color: #bcb;
 }
 
-#list th.enhance {
+#list thead th.enhance {
   background-color: #bcc;
 }
 
-#list th.weaken {
+#list thead th.weaken {
   background-color: #bbc;
 }
 
-#list th.encumber {
+#list thead th.encumber {
   background-color: #cbc;
 }
 
-#list td.attack {
+#list tbody td.attack {
   background-color: #fee;
 }
 
-#list tr:nth-child(even) td.attack {
+#list tbody tr:nth-child(even) td.attack {
   background-color: #edd;
 }
 
-#list td.defense {
+#list tbody td.defense {
   background-color: #ffe;
 }
 
-#list tr:nth-child(even) td.defense {
+#list tbody tr:nth-child(even) td.defense {
   background-color: #eed;
 }
 
-#list td.assist {
+#list tbody td.assist {
   background-color: #efe;
 }
 
-#list tr:nth-child(even) td.assist {
+#list tbody tr:nth-child(even) td.assist {
   background-color: #ded;
 }
 
-#list td.enhance {
+#list tbody td.enhance {
   background-color: #eff;
 }
 
-#list tr:nth-child(even) td.enhance {
+#list tbody tr:nth-child(even) td.enhance {
   background-color: #dee;
 }
 
-#list td.weaken {
+#list tbody td.weaken {
   background-color: #eef;
 }
 
-#list tr:nth-child(even) td.weaken {
+#list tbody tr:nth-child(even) td.weaken {
   background-color: #dde;
 }
 
-#list td.encumber {
+#list tbody td.encumber {
   background-color: #fef;
 }
 
-#list tr:nth-child(even) td.encumber {
+#list tbody tr:nth-child(even) td.encumber {
   background-color: #ede;
 }
 
-#list .position1 svg {
+#list .position.no1 svg {
   fill: #0af;
 }
 
-#list .position2 svg {
+#list .position.no2 svg {
   fill: #fa0;
 }
 
-#list .position3 svg {
+#list .position.no3 svg {
   fill: #f00;
 }
 
-#list .rating1 svg {
+#list .rating.no1 svg {
   fill: url(#star1);
 }
 
-#list .rating2 svg {
+#list .rating.no2 svg {
   fill: url(#star2);
 }
 
-#list .rating3 svg {
+#list .rating.no3 svg {
   fill: url(#star3);
 }
 
-#list .rating4 svg {
+#list .rating.no4 svg {
   fill: url(#star4);
 }
 
-#list .rating5 svg {
+#list .rating.no5 svg {
   fill: url(#star5);
 }
 

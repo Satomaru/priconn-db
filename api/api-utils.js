@@ -1,5 +1,5 @@
 const apiUtils = {
-  toArray: (...value) => value.flat(),
+  toArray: (value) => (Array.isArray(value)) ? value : [value],
 
   isNullish: (value) => value === null || value === undefined,
 
@@ -20,6 +20,11 @@ const apiUtils = {
     }
 
     return (value1 < value2) ? -1: 1;
+  },
+
+  containsOneOf: (array, ...oneOf) => {
+    const expected = oneOf.flat();
+    return array.some((value) => expected.includes(value));
   }
 }
 

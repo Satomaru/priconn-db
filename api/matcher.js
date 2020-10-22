@@ -1,14 +1,11 @@
+const apiUtils = require('./api-utils');
+
 function equalsNumber(actual, expected) {
   return actual === Number(expected);
 }
 
 function includes(actual, expected) {
   return actual.includes(expected);
-}
-
-function containsOneOf(actual, expected) {
-  const array = (Array.isArray(expected)) ? expected : [expected];
-  return actual.some((value) => array.includes(value));  
 }
 
 class Matcher {
@@ -26,7 +23,7 @@ class Matcher {
   }
 
   containsOneOf(actual, expected) {
-    return this.match(actual, expected, containsOneOf);
+    return this.match(actual, expected, apiUtils.containsOneOf);
   }
 
   match(actual, expected, callback) {

@@ -1,15 +1,7 @@
 import React from 'react';
 import { handleClick } from '../jsx-helper.jsx';
 import { CaretRight, Star } from './icons.jsx';
-import skillList from './skill-list.json';
-
-function getSkillGroup(value) {
-  return skillList.find((group) => group.value === value);
-}
-
-function getSkill(group, value) {
-  return getSkillGroup(group).items.find((item) => item.value === value);
-}
+import { skillMap } from './skill';
 
 function Position(props) {
   const icons = [];
@@ -19,7 +11,7 @@ function Position(props) {
   }
 
   return (
-    <span className={'position' + props.value}>
+    <span className={'position no' + props.value}>
       {icons}
     </span>
   );
@@ -33,21 +25,24 @@ function Rating(props) {
   }
 
   return (
-    <span className={'rating' + props.value}>
+    <span className={'rating no' + props.value}>
       {icons}
     </span>
   );
 }
 
-function Skill(props) {
-  const skill = getSkill(props.group, props.value);
-  return <span>{skill?.caption}&nbsp;</span>;
+function SkillCaption(props) {
+  return (
+    <span>
+      {skillMap[props.group].skills[props.skill]}&nbsp;
+    </span>
+  );
 }
 
 function SkillGroup(props) {
   return (
     <span>
-      {props.value?.map(value => <Skill group={props.name} value={value}/>)}
+      {props.skills?.map(skill => <SkillCaption group={props.name} skill={skill}/>)}
     </span>
   );
 }
@@ -55,18 +50,18 @@ function SkillGroup(props) {
 function Row(props) {
   return (
     <tr>
-      <td>{props.data.name}</td>
-      <td><Position value={props.data.position}/></td>
-      <td className="number">{props.data.order}</td>
-      <td className="attack"><SkillGroup name="attack" value={props.data.skill.attack}/></td>
-      <td className="defense"><SkillGroup name="defense" value={props.data.skill.defense}/></td>
-      <td className="assist"><SkillGroup name="assist" value={props.data.skill.assist}/></td>
-      <td className="enhance"><SkillGroup name="enhance" value={props.data.skill.enhance}/></td>
-      <td className="weaken"><SkillGroup name="weaken" value={props.data.skill.weaken}/></td>
-      <td className="encumber"><SkillGroup name="encumber" value={props.data.skill.encumber}/></td>
-      <td><Rating value={props.data.rate.quest}/></td>
-      <td><Rating value={props.data.rate.boss}/></td>
-      <td><Rating value={props.data.rate.arena}/></td>
+      <td>{props.char.name}</td>
+      <td><Position value={props.char.position}/></td>
+      <td className="number">{props.char.order}</td>
+      <td className="attack"><SkillGroup name="attack" skills={props.char.skill.attack}/></td>
+      <td className="defense"><SkillGroup name="defense" skills={props.char.skill.defense}/></td>
+      <td className="assist"><SkillGroup name="assist" skills={props.char.skill.assist}/></td>
+      <td className="enhance"><SkillGroup name="enhance" skills={props.char.skill.enhance}/></td>
+      <td className="weaken"><SkillGroup name="weaken" skills={props.char.skill.weaken}/></td>
+      <td className="encumber"><SkillGroup name="encumber" skills={props.char.skill.encumber}/></td>
+      <td><Rating value={props.char.rate.quest}/></td>
+      <td><Rating value={props.char.rate.boss}/></td>
+      <td><Rating value={props.char.rate.arena}/></td>
     </tr>
   );
 }
@@ -93,19 +88,19 @@ export class List extends React.Component {
               <th colspan="3" className="anchor" onClick={this.handleClickRate}>評価</th>
             </tr>
             <tr>
-              <th className="attack">{getSkillGroup('attack').caption}</th>
-              <th className="defense">{getSkillGroup('defense').caption}</th>
-              <th className="assist">{getSkillGroup('assist').caption}</th>
-              <th className="enhance">{getSkillGroup('enhance').caption}</th>
-              <th className="weaken">{getSkillGroup('weaken').caption}</th>
-              <th className="encumber">{getSkillGroup('encumber').caption}</th>
+              <th className="attack">{skillMap.attack.caption}</th>
+              <th className="defense">{skillMap.defense.caption}</th>
+              <th className="assist">{skillMap.assist.caption}</th>
+              <th className="enhance">{skillMap.enhance.caption}</th>
+              <th className="weaken">{skillMap.weaken.caption}</th>
+              <th className="encumber">{skillMap.encumber.caption}</th>
               <th className="anchor" onClick={this.handleClickQuest}>クエスト</th>
               <th className="anchor" onClick={this.handleClickBoss}>ボス戦</th>
               <th className="anchor" onClick={this.handleClickArena}>アリーナ</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.value.chars?.map((char) => <Row data={char}/>)}
+            {this.props.value.chars?.map((char) => <Row char={char}/>)}
           </tbody>
         </table>
       </div>
