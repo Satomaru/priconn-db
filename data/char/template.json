@@ -4,10 +4,10 @@
     "position": 1,
     "skill": {
       "attack": [ "PS", "PR", "PA", "MS", "MR", "MA" ],
-      "defense": [ "PH", "MG" ],
+      "defense": [ "AP", "AM" ],
       "assist": [ "HP", "TP", "SP" ],
       "enhance": [ "AP", "AM", "DP", "DM", "BP", "BM" ],
-      "weaken": [ "AP", "AM", "DP", "DM" ],
+      "weaken": [ "AP", "AM", "DP", "DM", "TP", "SP" ],
       "encumber": [ "NK", "ST", "CF", "BL", "TP", "PR" ]
     },
     "rate": {

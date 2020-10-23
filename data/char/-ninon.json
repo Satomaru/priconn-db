@@ -1,0 +1,17 @@
+{
+  "general": {
+    "name": "ニノン",
+    "position": 2,
+    "skill": {
+      "attack": [ "PR" ],
+      "encumber": [ "NK" ]
+    },
+    "rate": {
+      "quest": 1,
+      "boss": 1,
+      "arena": 1
+    }
+  },
+  "detail": {
+  }
+}

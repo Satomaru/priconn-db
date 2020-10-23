@@ -1,0 +1,17 @@
+{
+  "general": {
+    "name": "ジータ",
+    "position": 3,
+    "skill": {
+      "attack": [ "PS" ],
+      "assist": [ "TP" ]
+    },
+    "rate": {
+      "quest": 2,
+      "boss": 2,
+      "arena": 2
+    }
+  },
+  "detail": {
+  }
+}

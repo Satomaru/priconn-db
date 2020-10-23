@@ -1,0 +1,18 @@
+{
+  "general": {
+    "name": "ナナカ（サマー）",
+    "position": 2,
+    "skill": {
+      "attack": [ "MR" ],
+      "enhance": [ "AM" ],
+      "weaken": [ "DM" ]
+    },
+    "rate": {
+      "quest": 2,
+      "boss": 2,
+      "arena": 2
+    }
+  },
+  "detail": {
+  }
+}

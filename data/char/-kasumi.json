@@ -1,0 +1,18 @@
+{
+  "general": {
+    "name": "カスミ",
+    "position": 1,
+    "skill": {
+      "attack": [ "MR" ],
+      "weaken": [ "DM", "TP", "SP" ],
+      "encumber": [ "ST", "CF" ]
+    },
+    "rate": {
+      "quest": 2,
+      "boss": 1,
+      "arena": 2
+    }
+  },
+  "detail": {
+  }
+}

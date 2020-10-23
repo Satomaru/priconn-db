@@ -81,7 +81,7 @@ table {
 
 th, td {
   box-sizing: border-box; 
-  border: 1px solid #aaa;
+  border: 1px solid #ccc;
   padding: 4px 8px 4px 8px;
   font-family: serif;
   font-size: var(--text-size);

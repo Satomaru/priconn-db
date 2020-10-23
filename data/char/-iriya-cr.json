@@ -1,0 +1,16 @@
+{
+  "general": {
+    "name": "イリヤ（クリスマス）",
+    "position": 3,
+    "skill": {
+      "attack": [ "MS", "MR" ]
+    },
+    "rate": {
+      "quest": 1,
+      "boss": 3,
+      "arena": 1
+    }
+  },
+  "detail": {
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "general": {
+    "name": "リノ",
+    "position": 1,
+    "skill": {
+      "attack": [ "PR" ]
+    },
+    "rate": {
+      "quest": 1,
+      "boss": 1,
+      "arena": 2
+    }
+  },
+  "detail": {
+  }
+}

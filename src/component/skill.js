@@ -47,7 +47,9 @@ export const skillList = [
       { value: 'AP', caption: '物攻' },
       { value: 'AM', caption: '魔攻' },
       { value: 'DP', caption: '物防' },
-      { value: 'DM', caption: '魔防' }
+      { value: 'DM', caption: '魔防' },
+      { value: 'TP', caption: 'TP' },
+      { value: 'SP', caption: '速度' }
     ]
   },
   {

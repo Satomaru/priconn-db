@@ -1,0 +1,17 @@
+{
+  "general": {
+    "name": "ミヤコ",
+    "position": 3,
+    "skill": {
+      "attack": [ "PS" ],
+      "defense": [ "AP" ]
+    },
+    "rate": {
+      "quest": 3,
+      "boss": 2,
+      "arena": 3
+    }
+  },
+  "detail": {
+  }
+}

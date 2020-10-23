@@ -1,0 +1,17 @@
+{
+  "general": {
+    "name": "ユカリ",
+    "position": 2,
+    "skill": {
+      "assist": [ "HP", "TP" ],
+      "enhance": [ "BM" ]
+    },
+    "rate": {
+      "quest": 3,
+      "boss": 3,
+      "arena": 3
+    }
+  },
+  "detail": {
+  }
+}
