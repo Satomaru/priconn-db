@@ -80,6 +80,7 @@ table {
 }
 
 th, td {
+  box-sizing: border-box; 
   border: 1px solid #aaa;
   padding: 4px 8px 4px 8px;
   font-family: serif;
@@ -188,13 +189,6 @@ fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
 }
 
 /**************************************/
-/* app component */
-
-#app {
-  width: 1024px;
-}
-
-/**************************************/
 /* list component */
 
 #list thead th.attack {
@@ -219,6 +213,11 @@ fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
 
 #list thead th.encumber {
   background-color: #cbc;
+}
+
+#list tbody td.name {
+  padding-top: calc(var(--text-size) * 0.75 + 5px);
+  padding-bottom: calc(var(--text-size) * 0.75 + 5px);
 }
 
 #list tbody td.attack {

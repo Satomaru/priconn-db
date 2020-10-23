@@ -1,5 +1,9 @@
 const apiUtils = require('./api-utils');
 
+function isBlank(value) {
+  return value === undefined || value === "";
+}
+
 function equalsNumber(actual, expected) {
   return actual === Number(expected);
 }
@@ -27,8 +31,8 @@ class Matcher {
   }
 
   match(actual, expected, callback) {
-    if (this.matched && expected) {
-      if (!actual || !callback(actual, expected)) {
+    if (this.matched && !isBlank(expected)) {
+      if (isBlank(actual) || !callback(actual, expected)) {
         this.matched = false;
       }
     }

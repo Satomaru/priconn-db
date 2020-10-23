@@ -34,23 +34,23 @@ function Rating(props) {
 function SkillCaption(props) {
   return (
     <span>
-      {skillMap[props.group].skills[props.skill]}&nbsp;
+      {skillMap[props.group].skills[props.skill]}<br/>
     </span>
   );
 }
 
 function SkillGroup(props) {
   return (
-    <span>
+    <div>
       {props.skills?.map(skill => <SkillCaption group={props.name} skill={skill}/>)}
-    </span>
+    </div>
   );
 }
 
 function Row(props) {
   return (
     <tr>
-      <td>{props.char.name}</td>
+      <td className="name">{props.char.name}</td>
       <td><Position value={props.char.position}/></td>
       <td className="number">{props.char.order}</td>
       <td className="attack"><SkillGroup name="attack" skills={props.char.skill.attack}/></td>
