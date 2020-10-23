@@ -4,6 +4,7 @@
   --form-width: 640px;
   --form-label-width: 48px;
   --form-item-height: 22px;
+  --list-height: 75vh;
 }
 
 /**************************************/
@@ -40,7 +41,7 @@ p {
 }
 
 hr {
-  width: 400px;
+  width: calc(100vw - 18px);
   height: 1px;
   margin: var(--paragraph-margin) 0 var(--paragraph-margin) 0;
   border-top: 1px solid #999;
@@ -75,7 +76,6 @@ svg {
 /* table */
 
 table {
-  margin: var(--paragraph-margin) 0 0 0;
   border-collapse: collapse;
 }
 
@@ -119,7 +119,7 @@ fieldset {
   width: var(--form-width);
   border: 1px solid #888;
   border-radius: 4px;
-  padding: 4px;
+  padding: 8px;
 }
 
 fieldset legend {
@@ -145,7 +145,6 @@ fieldset dt {
   font-weight: bold;
   line-height: var(--form-item-height);
   text-align: right;
-  vertical-align: middle;
 }
 
 fieldset dd {
@@ -156,26 +155,31 @@ fieldset dd {
   padding: 0;
   font-size: var(--text-size);
   line-height: var(--form-item-height);
-  vertical-align: middle;
 }
 
-fieldset input[type="text"] {
+fieldset dd input[type="text"] {
   box-sizing: border-box;
-  width: calc(var(--form-width) - var(--form-label-width) - 32px);
+  width: 100%;
   margin: 0;
   padding: 0 0 0 4px;
+  vertical-align: top;
 }
 
-fieldset select {
+fieldset dd select {
   box-sizing: border-box;
   margin: 0;
   padding: 0 4px 0 4px;
+  vertical-align: top;
 }
 
-fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
+fieldset dd :matches(input[type="radio"], input[type="checkbox"])+label {
   padding-right: 1em;
   font-size: var(--text-size);
   vertical-align: top;
+}
+
+fieldset div.buttons {
+  text-align: right;
 }
 
 /**************************************/
@@ -190,6 +194,17 @@ fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
 
 /**************************************/
 /* list component */
+
+#list {
+  height: var(--list-height);
+  margin-top: var(--paragraph-margin);
+  overflow: auto;
+}
+
+#list thead {
+  position: sticky;
+  top: 0;
+}
 
 #list thead th.attack {
   background-color: #cbb;
@@ -303,11 +318,6 @@ fieldset :matches(input[type="radio"], input[type="checkbox"])+label {
 /**************************************/
 /* search component */
 
-#search .buttons {
-  text-align: right;
-}
-
 #search select[name="skillgroup"] {
   margin-right: 8px;
-  vertical-align: top;
 }
