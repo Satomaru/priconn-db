@@ -11,9 +11,8 @@
     "css-loader": "2.1.x",
     "file-loader": "^4.0.0",
     "play-js-express": "file:sub-modules/play-js-express",
+    "play-js-react": "file:sub-modules/play-js-react",
     "play-js-utils": "file:sub-modules/play-js-utils",
-    "react": "16.x.x",
-    "react-dom": "16.x.x",
     "style-loader": "0.x.x",
     "url-loader": "^2.0.0"
   }

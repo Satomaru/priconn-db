@@ -192,6 +192,12 @@ fieldset div.buttons {
   text-underline-offset: 2px;
 }
 
+.render-error {
+  padding: 16px;
+  font: bold 16px sans-serif;
+  color: #f00;
+}
+
 /**************************************/
 /* list component */
 

@@ -1,6 +1,6 @@
-const router = require('play-js-express').Router();
+const playJsExpress = require('play-js-express');
+const router = playJsExpress.Router();
 const Char = require('./char');
-const Matcher = require('./matcher');
 
 router.get('/', (request, response) => {
   console.log('\nrequest: char-api/list');
@@ -23,7 +23,7 @@ router.post('/search', (request, response) => {
   for (const id of Char.ids) {
     const char = new Char(id);
 
-    new Matcher()
+    new playJsExpress.Matcher()
       .includes(char.data.name, condition.name)
       .equalsNumber(char.data.position, condition.position)
       .containsOneOf(char.data.skill[condition.skillgroup], skill)

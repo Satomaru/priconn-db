@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'play-js-react';
 
 export function CaretRight(props) {
   return (

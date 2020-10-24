@@ -1,5 +1,4 @@
-import React from 'react';
-import { handleSubmit, handleChange } from '../jsx-helper.jsx';
+import { React, Component, jsxHelper } from 'play-js-react';
 import { skillList } from './skill';
 
 const skillGroupOptions = [];
@@ -10,36 +9,40 @@ skillList.forEach((group) => {
   skills[group.value] = group.items;
 });
 
-class SkillGroup extends React.Component {
+class SkillGroup extends Component {
 
-  handleChange = (event) => {
-    handleChange(event, this.props, this.props.name, event.target.value, event.target.checked);
-  }
+  handleChange = (event) =>
+    jsxHelper.handleChange(
+      event,
+      this.props,
+      this.props.name,
+      event.target.value,
+      event.target.checked);
 
-  render() {
-    return (
-      <span>
-        {skills[this.props.name]?.map((item) =>
-          <span>
-            <input
-              id={'skill' + item.value}
-              type="checkbox"
-              name="skill"
-              value={item.value}
-              checked={this.props.checked && this.props.checked[item.value]}
-              onChange={this.handleChange}/>
+  createView = () => (
+    <span>
+      {skills[this.props.name]?.map((item) =>
+        <span>
+          <input
+            id={'skill' + item.value}
+            type="checkbox"
+            name="skill"
+            value={item.value}
+            checked={this.props.checked && this.props.checked[item.value]}
+            onChange={this.handleChange}/>
 
-            <label for={'skill' + item.value}>{item.caption}</label>
-          </span>
-        )}
-      </span>
-    );
-  }
+          <label for={'skill' + item.value}>{item.caption}</label>
+        </span>
+      )}
+    </span>
+  );
 }
 
-export class Search extends React.Component {
+export class Search extends Component {
 
-  handleSubmit = (event) => handleSubmit(event, this.props);
+  handleSubmit = (event) => {
+    jsxHelper.handleSubmit(event, this.props);
+  }
 
   handleChangeSkillGroup = (event) => {
     this.setState({ skillGroup: event.target.value });
@@ -58,6 +61,53 @@ export class Search extends React.Component {
     });
   }
 
+  createView = () => (
+    <div id="search">
+      <form onSubmit={this.handleSubmit}>
+        <fieldset>
+          <legend>検索</legend>
+          <dl>
+            <dt>名前</dt>
+            <dd>
+              <input type="text" name="name"/>
+            </dd>
+
+            <dt>配置</dt>
+            <dd>
+              <select name="position">
+                <option value="">（未選択）</option>
+                <option value="3">前衛</option>
+                <option value="2">中衛</option>
+                <option value="1">後衛</option>
+              </select>
+            </dd>
+
+            <dt>技能</dt>
+            <dd>
+              <select
+                name="skillgroup"
+                value={this.state.skillGroup}
+                onChange={this.handleChangeSkillGroup}>
+
+                <option value="">全て</option>
+                {skillGroupOptions}
+              </select>
+
+              <SkillGroup
+                name={this.state.skillGroup}
+                checked={this.state.skillChecked[this.state.skillGroup]}
+                onChange={this.handleChangeSkill}/>
+
+            </dd>
+          </dl>
+          <div className="buttons">
+            <input type="submit" value="検索"/>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  );
+
   constructor(props) {
     super(props);
 
@@ -66,54 +116,5 @@ export class Search extends React.Component {
       skillChecked: {},
       debug: null
     };
-  }
-
-  render() {
-    return (
-      <div id="search">
-        <form onSubmit={this.handleSubmit}>
-          <fieldset>
-            <legend>検索</legend>
-            <dl>
-              <dt>名前</dt>
-              <dd>
-                <input type="text" name="name"/>
-              </dd>
-
-              <dt>配置</dt>
-              <dd>
-                <select name="position">
-                  <option value="">（未選択）</option>
-                  <option value="3">前衛</option>
-                  <option value="2">中衛</option>
-                  <option value="1">後衛</option>
-                </select>
-              </dd>
-
-              <dt>技能</dt>
-              <dd>
-                <select
-                  name="skillgroup"
-                  value={this.state.skillGroup}
-                  onChange={this.handleChangeSkillGroup}>
-
-                  <option value="">全て</option>
-                  {skillGroupOptions}
-                </select>
-
-                <SkillGroup
-                  name={this.state.skillGroup}
-                  checked={this.state.skillChecked[this.state.skillGroup]}
-                  onChange={this.handleChangeSkill}/>
-
-              </dd>
-            </dl>
-            <div className="buttons">
-              <input type="submit" value="検索"/>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-    );
   }
 }
