@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require('play-js-express').Router();
 const Char = require('./char');
 const Matcher = require('./matcher');
 
