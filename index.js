@@ -1,26 +1,5 @@
-const express = require('express');
-const webpack = require('webpack');
-const webpackMiddleware = require('webpack-dev-middleware');
-const multipart = require('connect-multiparty');
-const config = require('./webpack.config.js');
-const compiler = webpack(config);
-const app = express();
-const port = process.env['REACT_APP_PORT'];
-
-const middleware = webpackMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  serverSideRender: false,
-  watchOptions: {
-    ignored: /.*/
-  }
-});
-
-app.use(middleware);
-app.use(multipart());
-app.use(express.static('public'));
-app.use('/char', require('./api/char-api'));
-app.listen(port, () => console.log(`Launching... http://localhost:${port}\n`));
-
-try {
-  pjs.register(app, middleware);
-} catch (error) {}
+const playJsExpress = require('play-js-express');
+const server = new playJsExpress.Server(pjs);
+server.init(require('./webpack.config.js'));
+server.use('/char', require('./api/char-api'));
+server.listen();
