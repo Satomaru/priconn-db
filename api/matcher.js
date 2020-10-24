@@ -1,4 +1,4 @@
-const apiUtils = require('./api-utils');
+const playJsUtils = require('play-js-utils');
 
 function isBlank(value) {
   return value === undefined || value === "";
@@ -27,7 +27,7 @@ class Matcher {
   }
 
   containsOneOf(actual, expected) {
-    return this.match(actual, expected, apiUtils.containsOneOf);
+    return this.match(actual, expected, playJsUtils.containsOneOf);
   }
 
   match(actual, expected, callback) {

@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const apiUtils = require('./api-utils');
 const Char = require('./char');
 const Matcher = require('./matcher');
 

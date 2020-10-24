@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const apiUtils = require('./api-utils');
+const playJsUtils = require('play-js-utils');
 const charOrderList = require('../data/char/order.json');
 const charPath = path.join(__dirname, '../data/char/');
 const charFileMatcher = /^-([a-z]+(-[a-z]{2})?)\.json$/;
@@ -19,7 +19,7 @@ class Char {
   }
 
   static compareByName(char1, char2) {
-    return apiUtils.compare(char1.data.name, char2.data.name);
+    return playJsUtils.compare(char1.data.name, char2.data.name);
   }
 
   constructor(id) {
