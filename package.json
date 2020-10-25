@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "play-js-express": "file:sub-modules/play-js-express",
     "play-js-react": "file:sub-modules/play-js-react",
+    "play-js-react-express": "file:sub-modules/play-js-react-express",
     "play-js-utils": "file:sub-modules/play-js-utils"
   }
 }
