@@ -1,4 +1,4 @@
-import { React, Component, jsxHelper } from 'play-js-react';
+import { React, Component } from 'play-js-react';
 import { skillList } from './skill';
 
 const skillGroupOptions = [];
@@ -11,13 +11,14 @@ skillList.forEach((group) => {
 
 class SkillGroup extends Component {
 
-  handleChange = (event) =>
-    jsxHelper.handleChange(
-      event,
-      this.props,
-      this.props.name,
-      event.target.value,
-      event.target.checked);
+  argsOnChange = (event) => [
+    event.target.name,
+    {
+      group: this.props.name,
+      skill: event.target.value,
+      checked: event.target.checked
+    }
+  ];
 
   createView = () => (
     <span>
@@ -28,7 +29,7 @@ class SkillGroup extends Component {
             type="checkbox"
             name="skill"
             value={item.value}
-            checked={this.props.checked && this.props.checked[item.value]}
+            checked={(this.props.checked && this.props.checked[item.value]) || false}
             onChange={this.handleChange}/>
 
           <label for={'skill' + item.value}>{item.caption}</label>
@@ -40,26 +41,7 @@ class SkillGroup extends Component {
 
 export class Search extends Component {
 
-  handleSubmit = (event) => {
-    jsxHelper.handleSubmit(event, this.props);
-  }
-
-  handleChangeSkillGroup = (event) => {
-    this.setState({ skillGroup: event.target.value });
-  }
-
-  handleChangeSkill = (group, skill, checked) => {
-    this.setState((state, props) => {
-      const skillChecked = Object.assign({}, state.skillChecked);
-
-      if (!skillChecked[group]) {
-        skillChecked[group] = {};
-      }
-
-      skillChecked[group][skill] = checked;
-      return { skillChecked: skillChecked };
-    });
-  }
+  argsOnChange = (event) => [event.target.name, event.target.value];
 
   createView = () => (
     <div id="search">
@@ -86,18 +68,17 @@ export class Search extends Component {
             <dd>
               <select
                 name="skillgroup"
-                value={this.state.skillGroup}
-                onChange={this.handleChangeSkillGroup}>
+                value={this.props.value.skillGroup}
+                onChange={this.handleChange}>
 
                 <option value="">全て</option>
                 {skillGroupOptions}
               </select>
 
               <SkillGroup
-                name={this.state.skillGroup}
-                checked={this.state.skillChecked[this.state.skillGroup]}
-                onChange={this.handleChangeSkill}/>
-
+                name={this.props.value.skillGroup}
+                checked={this.props.value.skills[this.props.value.skillGroup]}
+                onChange={this.props.onChange}/>
             </dd>
           </dl>
           <div className="buttons">
@@ -107,14 +88,4 @@ export class Search extends Component {
       </form>
     </div>
   );
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      skillGroup: '',
-      skillChecked: {},
-      debug: null
-    };
-  }
 }

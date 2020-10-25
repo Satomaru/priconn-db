@@ -3,17 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.x.x",
-    "@babel/plugin-proposal-class-properties": "7.x.x",
-    "@babel/preset-env": "7.x.x",
-    "@babel/preset-react": "7.x.x",
-    "babel-loader": "8.x.x",
-    "css-loader": "2.1.x",
-    "file-loader": "^4.0.0",
     "play-js-express": "file:sub-modules/play-js-express",
     "play-js-react": "file:sub-modules/play-js-react",
-    "play-js-utils": "file:sub-modules/play-js-utils",
-    "style-loader": "0.x.x",
-    "url-loader": "^2.0.0"
+    "play-js-utils": "file:sub-modules/play-js-utils"
   }
 }

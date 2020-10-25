@@ -1,4 +1,4 @@
-import { React, Component, jsxHelper } from 'play-js-react';
+import { React, Component } from 'play-js-react';
 import { CaretRight, Star } from './icons.jsx';
 import { skillMap } from './skill';
 
@@ -62,23 +62,18 @@ class Row extends Component {
 
 export class List extends Component {
 
-  handleClickName = (event) => jsxHelper.handleClick(event, this.props, 'name');
-  handleClickOrder = (event) => jsxHelper.handleClick(event, this.props, 'order');
-  handleClickQuest = (event) => jsxHelper.handleClick(event, this.props, 'quest');
-  handleClickBoss = (event) => jsxHelper.handleClick(event, this.props, 'boss');
-  handleClickArena = (event) => jsxHelper.handleClick(event, this.props, 'arena');
-  handleClickRate = (event) => jsxHelper.handleClick(event, this.props, 'rate');
+  argsOnClick = (event) => [event.target.id.substring(5)];
 
   createView = () => (
     <div id="list">
       <table>
         <thead>
          <tr>
-            <th rowspan="2" className="anchor" onClick={this.handleClickName}>名前</th>
+            <th id="list-name" rowspan="2" className="anchor" onClick={this.handleClick}>名前</th>
             <th rowspan="2">配置</th>
-            <th rowspan="2" className="anchor" onClick={this.handleClickOrder}>順列</th>
+            <th id="list-order" rowspan="2" className="anchor" onClick={this.handleClick}>順列</th>
             <th colspan="6">技能</th>
-            <th colspan="3" className="anchor" onClick={this.handleClickRate}>評価</th>
+            <th id="list-rate" colspan="3" className="anchor" onClick={this.handleClick}>評価</th>
           </tr>
           <tr>
             <th className="attack">{skillMap.attack.caption}</th>
@@ -87,9 +82,9 @@ export class List extends Component {
             <th className="enhance">{skillMap.enhance.caption}</th>
             <th className="weaken">{skillMap.weaken.caption}</th>
             <th className="encumber">{skillMap.encumber.caption}</th>
-            <th className="anchor" onClick={this.handleClickQuest}>クエスト</th>
-            <th className="anchor" onClick={this.handleClickBoss}>ボス戦</th>
-            <th className="anchor" onClick={this.handleClickArena}>アリーナ</th>
+            <th id="list-quest" className="anchor" onClick={this.handleClick}>クエスト</th>
+            <th id="list-boss" className="anchor" onClick={this.handleClick}>ボス戦</th>
+            <th id="list-arena" className="anchor" onClick={this.handleClick}>アリーナ</th>
           </tr>
         </thead>
         <tbody>
