@@ -1,10 +1,10 @@
-import { appUtils } from 'play-js-react';
+import playJsUtils from 'play-js-utils';
 
-const compareCharByName = appUtils.comparator.create((char) => char.name);
-const compareCharByOrder = appUtils.comparator.create((char) => char.order);
-const compareCharByQuest = appUtils.comparator.create((char) => char.rate.quest, true);
-const compareCharByBoss = appUtils.comparator.create((char) => char.rate.boss, true);
-const compareCharByArena = appUtils.comparator.create((char) => char.rate.arena, true);
+const compareCharByName = playJsUtils.comparator.create((char) => char.name);
+const compareCharByOrder = playJsUtils.comparator.create((char) => char.order);
+const compareCharByQuest = playJsUtils.comparator.create((char) => char.rate.quest, true);
+const compareCharByBoss = playJsUtils.comparator.create((char) => char.rate.boss, true);
+const compareCharByArena = playJsUtils.comparator.create((char) => char.rate.arena, true);
 
 const compareCharByRate = (char1, char2) => {
   const max1 = Math.max(char1.rate.quest, char1.rate.boss, char1.rate.arena);
@@ -29,8 +29,8 @@ const compareCharByRate = (char1, char2) => {
 export const charComparators = {
   name: compareCharByName,
   order: compareCharByOrder,
-  quest: appUtils.comparator.bundle(compareCharByQuest, compareCharByName),
-  boss: appUtils.comparator.bundle(compareCharByBoss, compareCharByName),
-  arena: appUtils.comparator.bundle(compareCharByArena, compareCharByName),
+  quest: playJsUtils.comparator.bundle(compareCharByQuest, compareCharByName),
+  boss: playJsUtils.comparator.bundle(compareCharByBoss, compareCharByName),
+  arena: playJsUtils.comparator.bundle(compareCharByArena, compareCharByName),
   rate: compareCharByRate
 };

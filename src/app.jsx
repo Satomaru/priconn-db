@@ -7,7 +7,7 @@ import './app.css';
 class App extends Component {
 
   updateList = (chars) => {
-    this.setState((state, props) => {
+    this.setStateOrAlert((state, props) => {
       const list = Object.assign({}, state.list);
       list.chars = chars;
       return { list: list };
@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   handleClickList = (column) => {
-    this.setState((state, props) => {
+    this.setStateOrAlert((state, props) => {
       const list = Object.assign({}, state.list);
       const comparator = charComparators[column];
 
@@ -30,7 +30,7 @@ class App extends Component {
   handleChangeSearch = (name, value) => {
     switch (name) {
       case 'skillgroup':
-        this.setState((state, props) => {
+        this.setStateOrAlert((state, props) => {
           const search = Object.assign({}, state.search);
           search.skillGroup = value;
           return { search: search };
@@ -39,7 +39,7 @@ class App extends Component {
         break;
  
       case 'skill':
-        this.setState((state, props) => {
+        this.setStateOrAlert((state, props) => {
           const search = Object.assign({}, state.search);
 
           if (!search.skills[value.group]) {
